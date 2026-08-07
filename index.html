@@ -23,7 +23,7 @@
     <link rel="icon" href="/brand/favicons/favicon-48x48.png" type="image/png" sizes="48x48" />
     <link rel="apple-touch-icon" href="/brand/favicons/apple-touch-icon.png" />
 
-    <link rel="preload" as="image" href="/brand/png/primary/white/strenoa-primary-logo-white-h256.png" />
+    <link rel="preload" as="image" href="/brand/vector/strenoa-primary-logo-white.svg" type="image/svg+xml" />
     <link rel="preload" as="font" href="/assets/fonts/dm-sans-latin.woff2" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
@@ -43,16 +43,15 @@
       </header>
 
       <main class="hero">
-        <img
+        <object
           class="logo-mark"
-          src="/brand/png/primary/white/strenoa-primary-logo-white-h256.png"
-          alt="Strenoa"
-          decoding="async"
-        />
+          type="image/svg+xml"
+          data="/brand/vector/strenoa-primary-logo-white.svg"
+          aria-label="Strenoa"
+          role="img"
+        ></object>
+        <p class="tagline">Built for your goals. Adapted to your progress.</p>
         <h1 class="sr-only">Strenoa</h1>
-        <p class="subtitle">
-          Open the app to pick up where you left off, or reach out and our team will get back to you.
-        </p>
         <div class="cta-row">
           <a class="btn btn-primary focus-ring" href="https://app.strenoa.com">Open app</a>
           <a class="btn btn-secondary focus-ring" href="https://app.strenoa.com/support">Contact support</a>

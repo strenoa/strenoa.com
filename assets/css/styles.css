@@ -158,15 +158,20 @@ body {
 }
 
 .hero .logo-mark {
-  height: 4.5rem;
+  display: block;
+  height: clamp(19rem, 51vw, 34rem);
+  aspect-ratio: 859 / 740;
   width: auto;
-  margin-bottom: 2.25rem;
+  max-width: min(100%, 41rem);
+  margin-bottom: 0;
+  border: none;
+  pointer-events: none;
 }
 
 @media (max-width: 640px) {
   .hero .logo-mark {
-    height: 3.25rem;
-    margin-bottom: 1.75rem;
+    height: clamp(15rem, 58vw, 22rem);
+    max-width: min(100%, 31rem);
   }
 }
 
@@ -178,6 +183,15 @@ body {
   line-height: 1.1;
 }
 
+.hero .tagline {
+  margin: calc(-1 * clamp(2.5rem, 7vw, 4.5rem)) auto 0;
+  max-width: 28rem;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
 .hero .subtitle {
   margin: 1.25rem auto 0;
   max-width: 34rem;
@@ -186,7 +200,7 @@ body {
 }
 
 .cta-row {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.875rem;
