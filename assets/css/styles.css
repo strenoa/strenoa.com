@@ -150,13 +150,13 @@ body {
 
 /* Hero */
 .hero {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 4rem 0;
+  min-height: calc(100svh - 6rem);
+  padding: 4rem 0 3rem;
 }
 
 .hero .logo-mark {
@@ -247,15 +247,75 @@ body {
   background-color: rgba(255, 255, 255, 0.03);
 }
 
+/* Feature stack */
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(3rem, 8vw, 4.5rem);
+  padding: 1rem 0 2rem;
+}
+
+.feature {
+  margin: 0;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.feature img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Closing CTA */
+.closing-cta {
+  text-align: center;
+  padding: 3rem 0 4rem;
+}
+
+.closing-cta h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.closing-cta .cta-row {
+  margin-top: 1.5rem;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Footer */
 .site-footer {
   border-top: 1px solid var(--color-border-subtle);
   padding-top: 1.5rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: center;
+  gap: 0.75rem;
+  text-align: center;
   color: var(--color-text-muted);
   font-size: 0.8125rem;
 }
@@ -263,7 +323,23 @@ body {
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+}
+
+@media (min-width: 641px) {
+  .site-footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  .footer-links {
+    justify-content: flex-end;
+  }
 }
 
 .footer-links a {
