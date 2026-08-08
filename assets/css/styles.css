@@ -155,15 +155,34 @@ body {
   color: var(--color-text-primary);
 }
 
-/* Hero — leave room so the first feature peeks into the fold */
+/* Hero — equal spacers pin brand in the middle; cue centers in the lower gap */
 .hero {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+  min-height: calc(100svh - 6rem);
+  padding: 0;
+}
+
+.hero-top-spacer,
+.hero-cue-zone {
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.hero-main {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-cue-zone {
+  display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  min-height: calc(100svh - 6rem - clamp(7.5rem, 16vh, 11rem));
-  padding: 3rem 0 1.25rem;
+  padding-bottom: 0.5rem;
 }
 
 .hero .logo-mark {
@@ -217,25 +236,49 @@ body {
 }
 
 .explore-cue {
-  margin-top: 1.75rem;
+  margin: 0;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  color: var(--color-text-muted);
-  font-size: 0.875rem;
+  gap: 0.4rem;
+  color: var(--color-text-primary);
+  font-size: 1.125rem;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.15s ease, opacity 0.35s ease, transform 0.35s ease;
+  animation: explore-pulse 2.4s ease-in-out infinite;
 }
 
 .explore-cue:hover {
-  color: var(--color-text-primary);
+  color: #fff;
 }
 
 .explore-cue.is-hidden {
   opacity: 0;
   transform: translateY(0.35rem);
   pointer-events: none;
+  animation: none;
+}
+
+@keyframes explore-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+    color: var(--color-text-muted);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+    color: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explore-cue {
+    animation: none;
+    opacity: 1;
+    color: var(--color-text-primary);
+  }
 }
 
 .btn {
@@ -282,7 +325,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: clamp(3rem, 8vw, 4.5rem);
-  padding: 0 0 2rem;
+  padding: 1rem 0 2rem;
   scroll-margin-top: 1.5rem;
 }
 
