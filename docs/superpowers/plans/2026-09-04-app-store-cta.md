@@ -1,6 +1,6 @@
 # App Store CTA Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Make the official App Store badge the primary CTA on the strenoa.com hero and closing sections, with “Open app” secondary and Contact support removed from those rows.
 
@@ -39,13 +39,13 @@
 - Consumes: none
 - Produces: Badge file at `brand/badges/app-store-badge-black.svg` (or `.png`) for use as `src` in Task 2
 
-- [ ] **Step 1: Create the badges directory**
+- [x] **Step 1: Create the badges directory**
 
 ```bash
 mkdir -p /workspace/brand/badges
 ```
 
-- [ ] **Step 2: Obtain Apple’s official US English “Download on the App Store” badge**
+- [x] **Step 2: Obtain Apple’s official US English “Download on the App Store” badge**
 
 Source: [App Store Marketing Resources and Identity Guidelines](https://developer.apple.com/app-store/marketing/guidelines/). Prefer the black badge with outline suitable for dark backgrounds.
 
@@ -64,7 +64,7 @@ ls -la brand/badges/
 
 Expected: `SVG` or `PNG` file with non-trivial size (not a 0-byte placeholder).
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add brand/badges/
@@ -82,7 +82,7 @@ git commit -m "Add official App Store badge asset for marketing CTAs."
 - Consumes: Badge asset path from Task 1 (`/brand/badges/app-store-badge-black.svg` or `.png`)
 - Produces: Two identical CTA rows with App Store badge link + secondary Open app
 
-- [ ] **Step 1: Replace the hero CTA row**
+- [x] **Step 1: Replace the hero CTA row**
 
 Find:
 
@@ -115,11 +115,11 @@ Replace with (adjust image `src` extension to match Task 1):
 
 Use real intrinsic `width`/`height` matching the badge aspect ratio once the asset is known (keep displayed height ~40px via CSS).
 
-- [ ] **Step 2: Replace the closing CTA row the same way**
+- [x] **Step 2: Replace the closing CTA row the same way**
 
 Find the closing section’s `.cta-row` (same previous markup as the hero) and replace with the identical App Store + Open app markup from Step 1.
 
-- [ ] **Step 3: Sanity-check markup**
+- [x] **Step 3: Sanity-check markup**
 
 ```bash
 rg -n "Contact support|app-store-badge|Open app|apps\\.apple\\.com" index.html
@@ -131,7 +131,7 @@ Expected:
 - Two `Open app` links to `https://app.strenoa.com`
 - Header/footer still contain Support links (`app.strenoa.com/support`)
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add index.html
@@ -149,7 +149,7 @@ git commit -m "Use App Store badge as primary CTA; keep Open app secondary."
 - Consumes: `.app-store-badge` class from Task 2
 - Produces: Aligned badge height with secondary button; focus ring compatible
 
-- [ ] **Step 1: Add `.app-store-badge` styles after `.cta-row`**
+- [x] **Step 1: Add `.app-store-badge` styles after `.cta-row`**
 
 ```css
 .app-store-badge {
@@ -169,11 +169,11 @@ git commit -m "Use App Store badge as primary CTA; keep Open app secondary."
 
 Do not recolor, add drop shadows, or change badge aspect ratio beyond uniform scale via `height` + `width: auto`.
 
-- [ ] **Step 2: Confirm focus styles still apply**
+- [x] **Step 2: Confirm focus styles still apply**
 
 Existing `.focus-ring:focus-visible` already targets `.focus-ring`. No change required unless the badge needs a slightly larger `border-radius` match — keep the shared rule.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add assets/css/styles.css
@@ -191,13 +191,13 @@ git commit -m "Align App Store badge with marketing CTA row."
 - Consumes: Tasks 1–3 deliverables
 - Produces: Verification evidence (curl/link checks + screenshots)
 
-- [ ] **Step 1: Start static server from repo root**
+- [x] **Step 1: Start static server from repo root**
 
 ```bash
 python3 -m http.server 8000
 ```
 
-- [ ] **Step 2: Confirm pages and assets load**
+- [x] **Step 2: Confirm pages and assets load**
 
 ```bash
 curl -sI http://127.0.0.1:8000/ | head -5
@@ -210,11 +210,11 @@ Expected:
 - Badge asset returns 200
 - App Store href appears twice; `Open app` href to `app.strenoa.com` appears in CTA rows; no `Contact support`
 
-- [ ] **Step 3: Visual check (narrow + wide)**
+- [x] **Step 3: Visual check (narrow + wide)**
 
 Open `http://localhost:8000/`, capture hero and closing CTA screenshots at ~390px and ~1280px widths. Confirm badge is legible on `#0c0c0c`, wraps cleanly with “Open app”, and Support remains in header/footer.
 
-- [ ] **Step 4: Push and update PR**
+- [x] **Step 4: Push and update PR**
 
 ```bash
 git push -u origin cursor/app-store-cta-dc3d
